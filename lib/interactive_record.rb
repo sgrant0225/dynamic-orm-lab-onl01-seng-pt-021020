@@ -3,6 +3,10 @@ require 'active_support/inflector'
 require 'pry'
 class InteractiveRecord
   
+  def self.table_name 
+   self.to_s.downcase.pluralize
+ end
+  
   def self.column_names
    DB[:conn].results_as_hash = true
    sql = "PRAGMA table_info('#{table_name}')"
@@ -14,11 +18,7 @@ class InteractiveRecord
    column_names.compact
  end
  
-  self.column_names.each do |col_name|
-    attr_accessor col_name.to_sym
-  end
- 
- def initialize(options={})
+  def initialize(options={})
    options.each do |property, value|
      self.send("#{property}=", value)
    end
