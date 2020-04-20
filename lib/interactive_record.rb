@@ -59,5 +59,6 @@ class InteractiveRecord
    value = row_attr.values[0].to_s #converts the value into a string = "Susan"
      sql = "SELECT * FROM #{self.table_name} WHERE #{column} = '#{value}'" #passes in the column and value
      DB[:conn].execute(sql)
+     binding.pry
    end
 end
