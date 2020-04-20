@@ -56,7 +56,7 @@ class InteractiveRecord
 
  def self.find_by(row_attr) #:name =>"Susan"
    column = row_attr.keys[0].to_s #converts the key to a string = "name"
-     value = row_attr.values[0].to_s #converts the value into a string = "Susan"
+   value = row_attr.values[0].to_s #converts the value into a string = "Susan"
      sql = "SELECT * FROM #{self.table_name} WHERE #{column} = '#{value}'" #passes in the column and value
      DB[:conn].execute(sql)
    end
